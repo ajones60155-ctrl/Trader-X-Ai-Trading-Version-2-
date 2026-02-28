@@ -523,13 +523,6 @@ async function runAnalysis() {
 
     // Chart
     document.getElementById('chart-symbol').textContent = '– ' + symbol;
-    updateChart(
-      data.prices,
-      data.indicators.bb_upper ? buildBBSeries(data.prices.length, ind.bb_upper) : data.prices.map(() => null),
-      data.prices.map(() => null),
-      data.prices.map(() => null)
-    );
-    // Re-fetch full series data from indicator arrays (we need all 100 values)
     rebuildChart(data);
 
     document.getElementById('analyze-status').textContent = '✓ Done';
@@ -681,11 +674,6 @@ function smaClass(s20, s50) {
 }
 function fmt(n) {
   return Number(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
-function buildBBSeries(len, lastVal) {
-  const arr = new Array(len).fill(null);
-  arr[len - 1] = lastVal;
-  return arr;
 }
 
 /* ─────────────────────────────────────────────────────────────────── */

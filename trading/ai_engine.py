@@ -190,10 +190,10 @@ class AITradingSignal:
                 )
             elif rsi_now < 45:
                 scores["rsi"] = 0.4
-                reasons.append(f"RSI={rsi_now:.1f} is mildly bullish territory (30-45) → slight buy lean.")
+                reasons.append(f"RSI={rsi_now:.1f} is in mildly bullish territory (30-45) → slight buy lean.")
             elif rsi_now > 55:
                 scores["rsi"] = -0.4
-                reasons.append(f"RSI={rsi_now:.1f} is mildly bearish territory (55-70) → slight sell lean.")
+                reasons.append(f"RSI={rsi_now:.1f} is in mildly bearish territory (55-70) → slight sell lean.")
             else:
                 scores["rsi"] = 0.0
                 reasons.append(f"RSI={rsi_now:.1f} is neutral (45-55).")

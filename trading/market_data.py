@@ -32,7 +32,7 @@ def get_mock_prices(symbol: str, days: int = 100) -> list:
     seed = sum(ord(c) * (i + 1) for i, c in enumerate(symbol.upper()))
     rng = random.Random(seed)
 
-    volatility = base_price * 0.015   # ~1.5 % daily vol
+    volatility = base_price * 0.015   # ~1.5% daily vol
     drift = 0.0002                    # slight upward bias
 
     prices = []

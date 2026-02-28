@@ -10,6 +10,9 @@
   // Install Python dependencies as soon as the container is created
   "postCreateCommand": "pip install -r requirements.txt",
 
+  // Start the Flask dev-server every time the Codespace is (re)started
+  "postStartCommand": "nohup python main.py > /tmp/flask.log 2>&1 &",
+
   // Forward the Flask dev-server port so the app opens automatically
   "forwardPorts": [5000],
   "portsAttributes": {

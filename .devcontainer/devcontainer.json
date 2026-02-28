@@ -1,0 +1,33 @@
+{
+  "name": "Trader X AI",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+
+  // Use the smallest (2-core) machine to conserve Codespaces budget
+  "hostRequirements": {
+    "cpus": 2
+  },
+
+  // Install Python dependencies as soon as the container is created
+  "postCreateCommand": "pip install -r requirements.txt",
+
+  // Forward the Flask dev-server port so the app opens automatically
+  "forwardPorts": [5000],
+  "portsAttributes": {
+    "5000": {
+      "label": "Trader X AI",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.flake8"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      }
+    }
+  }
+}

@@ -29,6 +29,18 @@
       line-height: 1.5;
     }
     a { color: var(--blue); text-decoration: none; }
+    .btn-download {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--blue);
+      padding: 6px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+    }
+    .btn-download:hover { border-color: var(--blue); color: var(--text); }
 
     /* ── Scrollbar ────────────────────────────────────────────────── */
     ::-webkit-scrollbar { width: 6px; }
@@ -251,9 +263,12 @@
       <p>Algorithmic Intelligence &middot; Real-Time Signals</p>
     </div>
   </div>
-  <div class="header-status">
-    <span class="dot"></span>
-    <span id="hdr-status">Ready</span>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a href="/download" class="btn-download" title="Download project source files">⬇ Download Files</a>
+    <div class="header-status">
+      <span class="dot"></span>
+      <span id="hdr-status">Ready</span>
+    </div>
   </div>
 </header>
 

@@ -1,12 +1,14 @@
 # Trader-X-Ai-Trading-Version-2-
-Highly intelligent ai trader 
+Highly intelligent ai trader
 
-## Download
+## ⬇ Download
 
-When the app is running, you can download all project source files as a zip archive from:
+**[Click here to download the latest source files as a ZIP](https://github.com/ajones60155-ctrl/Trader-X-Ai-Trading-Version-2-/archive/refs/heads/main.zip)**
 
-```
-http://<host>:<port>/download
-```
+| Method | Link |
+|--------|------|
+| GitHub ZIP (no app required) | [Download ZIP](https://github.com/ajones60155-ctrl/Trader-X-Ai-Trading-Version-2-/archive/refs/heads/main.zip) |
+| GitHub TAR.GZ (no app required) | [Download TAR.GZ](https://github.com/ajones60155-ctrl/Trader-X-Ai-Trading-Version-2-/archive/refs/heads/main.tar.gz) |
+| In-app endpoint (when app is running) | `http://<host>:<port>/download` |
 
-This will serve a `Trader-X-Ai-Trading-Version-2.zip` file containing `main.py`, `requirements.txt`, `app.yaml`, `README.md`, `LICENSE`, and the `trading/` and `templates/` directories.
+The in-app `/download` endpoint serves a clean zip (`Trader-X-AI-Trading-Version-2.zip`) containing `main.py`, `requirements.txt`, `app.yaml`, `README.md`, `LICENSE`, and the `trading/` and `templates/` directories (no bytecode or caches). A **⬇ Download Files** button is also available in the top-right corner of the dashboard.

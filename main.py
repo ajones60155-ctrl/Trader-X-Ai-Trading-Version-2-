@@ -1,6 +1,10 @@
 """Flask entry point for Trader X AI Trading Dashboard."""
 
-from flask import Flask, jsonify, render_template, request, abort
+import io
+import os
+import zipfile
+
+from flask import Flask, jsonify, render_template, request, abort, send_file
 
 from trading.ai_engine import AITradingSignal
 from trading.market_data import MOCK_STOCKS, get_mock_prices
@@ -85,11 +89,49 @@ def history():
     return jsonify({"history": portfolio.history})
 
 
+@app.route("/download")
+def download():
+    """Serve a zip archive of the project source files."""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    # Files and directories to include in the download
+    include_items = [
+        "main.py",
+        "requirements.txt",
+        "app.yaml",
+        "README.md",
+        "LICENSE",
+        "trading",
+        "templates",
+    ]
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as zf:
+        for item in include_items:
+            full_path = os.path.join(base_dir, item)
+            if os.path.isfile(full_path):
+                zf.write(full_path, item)
+            elif os.path.isdir(full_path):
+                for root, _dirs, files in os.walk(full_path):
+                    if "__pycache__" in root.split(os.sep):
+                        continue
+                    for fname in files:
+                        if fname.endswith(".pyc"):
+                            continue
+                        file_path = os.path.join(root, fname)
+                        arcname = os.path.relpath(file_path, base_dir)
+                        zf.write(file_path, arcname)
+    buf.seek(0)
+    return send_file(
+        buf,
+        mimetype="application/zip",
+        as_attachment=True,
+        download_name="Trader-X-AI-Trading-Version-2.zip",
+    )
+
+
 # ---------------------------------------------------------------------------
 # Dev server
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    import os
     debug = os.environ.get("FLASK_DEBUG", "0") == "1"
     app.run(debug=debug, host="0.0.0.0", port=5000)
